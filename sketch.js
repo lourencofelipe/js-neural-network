@@ -2,6 +2,7 @@ function setup(){
     createCanvas(500, 500);
     background(0);
 
+    // Definindo valores para a matriz.
     let m = new Matrix(4, 4);
     console.log(m);
 }
