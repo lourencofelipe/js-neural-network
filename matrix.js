@@ -35,5 +35,25 @@ class Matrix {
             return A.data[i][j] + B.data[i][j];
         });
         console.log(matrix.data);
+        return matrix;
+    }
+
+    // Função para multiplicar as matrizes.
+    static multiply(A, B){
+        var matrix = new Matrix(A.rows, B.cols);
+
+        matrix.map((num, i, j) => {
+            let sum = 0;
+
+            for(let k=0; k<B.rows; k++){
+                let elem1 = A.data[i][k]; // Segue em direcao a coluna.
+                let elem2 = B.data[k][j]; // Segue em direcao a linha.
+
+                sum += elem1 * elem2; // Multiplica e soma uma linha por uma coluna.
+            }
+            return sum;
+        });
+        console.log(matrix);
+        return matrix;
     }
 }
