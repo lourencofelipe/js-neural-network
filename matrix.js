@@ -16,4 +16,24 @@ class Matrix {
             this.data.push(arr);
         }
     } 
+
+    map(func){
+        this.data = this.data.map((arr, i) => {
+            return arr.map((num, j) => {
+                return func(num, i, j);
+            });
+        });
+    }
+
+    // Função para adicionar as matrizes.
+    static add(A, B){
+        var matrix = new Matrix(A.rows,A.cols);
+        console.log(A.data);
+        console.log(B.data);
+        matrix.map((elem, i, j) =>{
+            // Somando as matrizes
+            return A.data[i][j] + B.data[i][j];
+        });
+        console.log(matrix.data);
+    }
 }
