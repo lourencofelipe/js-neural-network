@@ -10,8 +10,12 @@ class RedeNeural{
         // Matriz que corresponderá ao número de neurônios;
         // BIAS da entrada para a camada oculta;
         this.bias_ih = new Matrix(h_nodes, 1);
+        this.bias_ih.randomize();
         // BIAS da camada oculta para camada de saída;
         this.bias_ho = new Matrix(o_nodes, 1);
-        
+        this.bias_ho.randomize();
+
+        this.bias_ih.print();
+        this.bias_ho.print();
     }
 }

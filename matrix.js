@@ -11,11 +11,21 @@ class Matrix {
             let arr = [];
             for(let j=0; j < cols; j++){
                 // Incialmente adicionado valores randômicos.
-                arr.push(Math.floor(Math.random() *10));
+                arr.push(0);
             }
             this.data.push(arr);
         }
     } 
+
+    print(){
+        console.table(this.data);
+    }
+
+    randomize(){
+        this.map((elem, i, j) => {
+            return Math.random() * 2 - 1;
+        });
+    }
 
     map(func){
         this.data = this.data.map((arr, i) => {
@@ -28,8 +38,6 @@ class Matrix {
     // Função para adicionar as matrizes.
     static add(A, B){
         var matrix = new Matrix(A.rows,A.cols);
-        console.log(A.data);
-        console.log(B.data);
         matrix.map((elem, i, j) =>{
             // Somando as matrizes
             return A.data[i][j] + B.data[i][j];
@@ -53,7 +61,6 @@ class Matrix {
             }
             return sum;
         });
-        console.log(matrix);
         return matrix;
     }
 }

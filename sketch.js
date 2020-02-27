@@ -2,11 +2,12 @@ function setup(){
     createCanvas(500, 500);
     background(0);
 
-    // Definindo valores para a matriz.
-    let m1 = new Matrix(2, 2);
-    let m2 = new Matrix(2, 2);
-    console.log(m1.data, m2.data);
-    console.log(Matrix.multiply(m1, m2));
+    
+    // Rede neural com uma camada de entrada, tres ocultas
+    // e uma de saída.
+    var nn = new RedeNeural(1, 3, 1);
+
+    console.log(nn);
 
 }
 
