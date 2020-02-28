@@ -27,4 +27,10 @@ class RedeNeural{
         this.weights_ho.print();
         this.weights_ih.print();
     }
+
+    feedforward(input){
+        let input = Matrix.arrayToMatrix(input);
+        // Multiplicando os pesos pelo input.
+        let hidden = Matrix.multiply(this.weights_ih, input);
+    }
 }

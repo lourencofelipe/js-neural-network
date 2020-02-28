@@ -17,6 +17,15 @@ class Matrix {
         }
     } 
 
+    arrayToMatrix(arr){
+       // Matriz coluna das entradas. 
+       //Recupera o array e transforma em um objeto.
+       let matrix = new Matrix(arr.length, 1);
+        matrix.map((elem, i, j) => {
+        return arr[i];
+        });
+    }
+
     print(){
         console.table(this.data);
     }
@@ -52,7 +61,7 @@ class Matrix {
         matrix.map((num, i, j) => {
             let sum = 0;
 
-            for(let k=0; k<B.rows; k++){
+            for(let k=0; k<A.cols; k++){
                 let elem1 = A.data[i][k]; // Segue em direcao a coluna.
                 let elem2 = B.data[k][j]; // Segue em direcao a linha.
 
