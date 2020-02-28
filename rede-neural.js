@@ -1,5 +1,5 @@
 
-// Usar a fórmula matemática da sigmoide para utilizar na função de ativação.
+// Usar a fórmula matemática da sigmóide para utilizar na função de ativação.
 function sigmoid(x){
     // Math.exp() - Constante de Euler e o parâmetro é sua potência.
     return 1/(1 + Math.exp(-x)); 
@@ -15,7 +15,7 @@ class RedeNeural{
         this.o_nodes = o_nodes;
 
 
-        // Definindo valores e "randomizando" os bias e pesos
+        // Definindo valores e "randomizando" os bias e pesos;
         // Matriz que corresponderá ao número de neurônios;
         // BIAS da entrada para a camada oculta;
         this.bias_ih = new Matrix(this.h_nodes, 1);
@@ -31,11 +31,13 @@ class RedeNeural{
         this.weights_ho = new Matrix(this.o_nodes, this.h_nodes);
         this.weights_ho.randomize();
         
-        this.weights_ho.print();
-        this.weights_ih.print();
+        //this.weights_ho.print();
+        //this.weights_ih.print();
     }
 
     feedforward(input){
+     
+        // -------- INPUT -> HIDDEN --------
         let input = Matrix.arrayToMatrix(input);
         
         // Multiplicando os pesos pelo input.
@@ -45,6 +47,14 @@ class RedeNeural{
         hidden = Matrix.add(hidden, this.bias_ih);
     
        // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
-       hidden.map();
+       hidden.map(sigmoid);
+
+        // -------- HIDDEN -> OUTPUT --------
+
+        let output = Matrix.multiply(this.weights_ho, hidden);
+
+        output = Matrix.add(output, this.bias_ho);
+
+        output.map(sigmoid);
     }
 }
