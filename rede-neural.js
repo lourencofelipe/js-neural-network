@@ -30,7 +30,12 @@ class RedeNeural{
 
     feedforward(input){
         let input = Matrix.arrayToMatrix(input);
+        
         // Multiplicando os pesos pelo input.
         let hidden = Matrix.multiply(this.weights_ih, input);
+
+        // Adicionando o BIAS.
+        hidden = Matrix.add(hidden, this.bias_ih);
+    
     }
 }
