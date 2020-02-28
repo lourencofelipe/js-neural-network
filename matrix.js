@@ -36,12 +36,27 @@ class Matrix {
         });
     }
 
+    // Mapeamento uado para função de ativação.
+    static map(A, func){
+        let matrix = new Matrix(A.rows, B.rows);
+
+        this.data = matrix.map((arr, i) => {
+            return arr.map((num, j) => {
+                return func(num, i, j);
+            });
+        });
+
+        return matrix;
+    }
+
     map(func){
         this.data = this.data.map((arr, i) => {
             return arr.map((num, j) => {
                 return func(num, i, j);
             });
         });
+
+        return this;
     }
 
     // Função para adicionar as matrizes.

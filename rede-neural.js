@@ -1,3 +1,10 @@
+
+// Usar a fórmula matemática da sigmoide para utilizar na função de ativação.
+function sigmoid(x){
+    // Math.exp() - Constante de Euler e o parâmetro é sua potência.
+    return 1/(1 + Math.exp(-x)); 
+}
+
 class RedeNeural{
     
     // Input nodes, hidden nodes, output nodes.
@@ -37,5 +44,7 @@ class RedeNeural{
         // Adicionando o BIAS.
         hidden = Matrix.add(hidden, this.bias_ih);
     
+       // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
+       hidden.map();
     }
 }
