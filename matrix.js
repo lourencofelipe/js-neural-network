@@ -42,7 +42,6 @@ class Matrix {
             // Somando as matrizes
             return A.data[i][j] + B.data[i][j];
         });
-        console.log(matrix.data);
         return matrix;
     }
 
