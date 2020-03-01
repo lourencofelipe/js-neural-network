@@ -27,6 +27,14 @@ class Matrix {
         return matrix;
     }
 
+    static matrixToArray(obj){
+        let arr = [];
+        obj.map((elem, i, j) => {
+            arr.push(elem);
+        });
+        return arr;
+     }
+
     print(){
         console.table(this.data);
     }

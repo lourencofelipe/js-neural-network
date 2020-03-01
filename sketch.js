@@ -10,6 +10,4 @@ function setup(){
 }
 
 // Executado 30 vezes por segundo.
-function draw(){
-
-}
+function draw(){}
