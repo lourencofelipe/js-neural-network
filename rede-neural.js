@@ -5,6 +5,11 @@ function sigmoid(x){
     return 1/(1 + Math.exp(-x)); 
 }
 
+// Derivada da sigmoide, utilizada para o Backpropagation.
+function dSigmoid(){
+    return x * (1 - x);
+}
+
 class RedeNeural{
     
     // Input nodes, hidden nodes, output nodes.
@@ -35,26 +40,35 @@ class RedeNeural{
         //this.weights_ih.print();
     }
 
-    feedforward(input){
-     
+   // Array de entrada e um array de saída;
+    train(arr, target) {
         // -------- INPUT -> HIDDEN --------
         input = Matrix.arrayToMatrix(input);
-        
+                
         // Multiplicando os pesos pelo input.
         let hidden = Matrix.multiply(this.weights_ih, input);
 
         // Adicionando o BIAS.
         hidden = Matrix.add(hidden, this.bias_ih);
-    
-       // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
-       hidden.map(sigmoid);
+
+        // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
+        hidden.map(sigmoid);
 
         // -------- HIDDEN -> OUTPUT --------
-
+        //d(sigmoid) = Output * (1 - Output)
         let output = Matrix.multiply(this.weights_ho, hidden);
 
         output = Matrix.add(output, this.bias_ho);
 
         output.map(sigmoid);
+
+        // BACKPROPAGATION
+        let expected = Matrix.arrayToMatrix(target);
+        
+        // Erro da saída.
+        let output_error = matrix.subtract(expected, input);
+        
+        // Derivada da saída.
+        let d_output = Matrix.map(output, dSigmoid);
     }
 }
