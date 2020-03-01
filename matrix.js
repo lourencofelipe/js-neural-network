@@ -92,17 +92,25 @@ class Matrix {
         return matrix;
     }
 
-    // Função de adição de matrizes.
+    // Adição de matrizes.
     static add(A, B){
         var matrix = new Matrix(A.rows, A.cols);
         matrix.map((elem, i, j) =>{
-            // Somando as matrizes
             return A.data[i][j] + B.data[i][j];
         });
         return matrix;
     }
+    
+    // Subtração de matrizes.
+    static subtract(A, B){
+        var matrix = new Matrix(A.rows, A.cols);
+        matrix.map((elem, i, j) =>{
+            return A.data[i][j] - B.data[i][j];
+        });
+        return matrix;
+    }
 
-    // Função de produto de matrizes.
+    // Produto entre matrizes.
     static multiply(A, B){
         var matrix = new Matrix(A.rows, B.cols);
 
