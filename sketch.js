@@ -1,13 +1,9 @@
 function setup(){
     createCanvas(500, 500);
     background(0);
-
     
-    // Rede neural com uma camada de entrada, tres ocultas
-    // e uma de saída.
-    var nn = new RedeNeural(1, 3, 1);
-
-    console.log(nn);
+    var nn = new RedeNeural(1, 3, 5);
+    var arr = [1, 2];
 
 }
 

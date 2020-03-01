@@ -32,7 +32,7 @@ class Matrix {
 
     randomize(){
         this.map((elem, i, j) => {
-            return Math.random() * 2 - 1;
+           return Math.random() * 2 - 1;
         });
     }
 
@@ -60,7 +60,7 @@ class Matrix {
     }
 
     // Mariz transposta.
-    static transpose() {
+    static transpose(A) {
         var matrix  = new Matrix(A.cols, A.rows);
         matrix.map((num, i, j) => {
             return A.data[j][i];
@@ -72,7 +72,7 @@ class Matrix {
      
     static escalar_multiply(A, escalar){
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) =>{
+        matrix.map((elem, i, j) => {
             return A.data[i][j] * escalar;
         });
         return matrix;
@@ -85,7 +85,7 @@ class Matrix {
        
         // Porduto de matrizes de mesma dimensão.
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) =>{
+        matrix.map((elem, i, j) => {
             // Multiplicação elemento por elemento.
             return A.data[i][j] * B.data[i][j]; 
         });
