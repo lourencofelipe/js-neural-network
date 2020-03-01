@@ -89,5 +89,13 @@ class RedeNeural{
         let weights_ho_Deltas = Matrix.multiply(gradient, hidden_T);
         
         this.weights_ho = Matrix.add(this.weights_ho, weights_ho_Deltas);
+
+        // ---------- HIDDEN -> INPUT ----------
+
+        let weights_ho_T = Matrix.transpose(this.weights_ho);
+
+        // Erro da camada oculta (matriz transposta dos pesos_ho * erro da saída).
+        let hiden_error = Matrix.multiply(weights_ho_T, output_error);
+
     }
 }

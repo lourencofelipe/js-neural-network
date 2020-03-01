@@ -2,6 +2,7 @@ function setup(){
     createCanvas(500, 500);
     background(0);
     
+    // Input/Hidden/Output
     var nn = new RedeNeural(1, 3, 2);
     var arr = [1,2];
     
