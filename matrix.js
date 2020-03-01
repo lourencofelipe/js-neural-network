@@ -19,7 +19,7 @@ class Matrix {
     // Funções diversas
 
     arrayToMatrix(arr){
-       //Recupera o array e transforma em um objeto.
+       // Recupera o array e transforma em um objeto.
        let matrix = new Matrix(arr.length, 1);
         matrix.map((elem, i, j) => {
         return arr[i];
@@ -36,7 +36,7 @@ class Matrix {
         });
     }
 
-    // Mapeamento uado para função de ativação.
+    // Mapeamento usado para função de ativação.
     static map(A, func){
         let matrix = new Matrix(A.rows, B.cols);
 
@@ -59,18 +59,34 @@ class Matrix {
         return this;
     }
 
-    // Operações estáticas matriz x escalar
+    // Mariz transposta.
+    static transpose() {
+        var matrix  = new Matrix(A.cols, A.rows);
+        matrix.map((num, i, j) => {
+            return A.data[j][i];
+        });
+        return matrix;
+    }
+
+    // Operações estáticas matriz x escalar.
+     
+    static escalar_multiply(A, escalar){
+        var matrix = new Matrix(A.rows, A.cols);
+        matrix.map((elem, i, j) =>{
+            return A.data[i][j] * escalar;
+        });
+        return matrix;
+    }
 
 
-
-    // Operações estáticas matriz x matriz
+    // Operações estáticas matriz x matriz.
 
     static hadamard(A, B){
        
         // Porduto de matrizes de mesma dimensão.
         var matrix = new Matrix(A.rows, A.cols);
         matrix.map((elem, i, j) =>{
-            // multiplicação elemento por elemento.
+            // Multiplicação elemento por elemento.
             return A.data[i][j] * B.data[i][j]; 
         });
         return matrix;
