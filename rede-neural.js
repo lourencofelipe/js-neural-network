@@ -65,12 +65,14 @@ class RedeNeural{
         output.map(sigmoid);
 
         // BACKPROPAGATION
+        
+        // ---------- OUTPUT -> HIDDEN ----------
         let expected = Matrix.arrayToMatrix(target);
         
         // Erro da saída.
         let output_error = Matrix.subtract(expected, input);
         
-        // Derivada da saída.
+        // Derivada da saída (sigmóide).
         let d_output = Matrix.map(output, dSigmoid);
 
         // Realizando a transposta da camada oculta.
@@ -79,6 +81,13 @@ class RedeNeural{
         // Realizando o produto(hadamard) das matrizes do erro de saída e da derivada.
         let gradient = Matrix.hadamard(output_error, d_output);
 
+        // Learning rate
         gradient = Matrix.escalar_multiply(gradient, this.learning_rate);
+
+        // Variação do pesos entre a camada oculta e a camada de saída.
+        // (Correção dos pesos).
+        let weights_ho_Deltas = Matrix.multiply(gradient, hidden_T);
+        
+        this.weights_ho = Matrix.add(this.weights_ho, weights_ho_Deltas);
     }
 }
