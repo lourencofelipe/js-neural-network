@@ -95,7 +95,22 @@ class RedeNeural{
         let weights_ho_T = Matrix.transpose(this.weights_ho);
 
         // Erro da camada oculta (matriz transposta dos pesos_ho * erro da saída).
-        let hiden_error = Matrix.multiply(weights_ho_T, output_error);
+        let hidden_error = Matrix.multiply(weights_ho_T, output_error);
 
+        // Derivada da camada oculta.
+        let d_hidden = Matrix.map(hidden, dSigmoid);
+
+        // Entrada transposta
+        let input_T = Matrix.transpose(input);
+
+        // Gradiente da camada oculta.
+        // Erro da camada ocula * derivada da camada oculta.
+        let gradient_H = Matrix.hadamard(hidden_error, d_hidden);
+        gradient = Matrix.escalar_multiply(gradient, this.learning_rate);
+
+        // Variação dos pesos entre a camada de entrada e camda oculta.
+        let weights_ih_deltas = Matrix.multiply(gradient_H, input_T);
+        
+        this.weights_ih = Matrix.add(this.weights_ho, weights_ih_deltas);
     }
 }
