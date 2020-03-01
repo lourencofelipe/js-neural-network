@@ -10,15 +10,15 @@ class Matrix {
         for(let i=0; i < rows; i++){
             let arr = [];
             for(let j=0; j < cols; j++){
-                // Incialmente adicionado valores randômicos.
                 arr.push(0);
             }
             this.data.push(arr);
         }
     } 
 
+    // Funções diversas
+
     arrayToMatrix(arr){
-       // Matriz coluna das entradas. 
        //Recupera o array e transforma em um objeto.
        let matrix = new Matrix(arr.length, 1);
         matrix.map((elem, i, j) => {
@@ -38,7 +38,7 @@ class Matrix {
 
     // Mapeamento uado para função de ativação.
     static map(A, func){
-        let matrix = new Matrix(A.rows, B.rows);
+        let matrix = new Matrix(A.rows, B.cols);
 
         this.data = matrix.map((arr, i) => {
             return arr.map((num, j) => {
@@ -59,9 +59,26 @@ class Matrix {
         return this;
     }
 
-    // Função para adicionar as matrizes.
+    // Operações estáticas matriz x escalar
+
+
+
+    // Operações estáticas matriz x matriz
+
+    static hadamard(A, B){
+       
+        // Porduto de matrizes de mesma dimensão.
+        var matrix = new Matrix(A.rows, A.cols);
+        matrix.map((elem, i, j) =>{
+            // multiplicação elemento por elemento.
+            return A.data[i][j] * B.data[i][j]; 
+        });
+        return matrix;
+    }
+
+    // Função de adição de matrizes.
     static add(A, B){
-        var matrix = new Matrix(A.rows,A.cols);
+        var matrix = new Matrix(A.rows, A.cols);
         matrix.map((elem, i, j) =>{
             // Somando as matrizes
             return A.data[i][j] + B.data[i][j];
@@ -69,7 +86,7 @@ class Matrix {
         return matrix;
     }
 
-    // Função para multiplicar as matrizes.
+    // Função de produto de matrizes.
     static multiply(A, B){
         var matrix = new Matrix(A.rows, B.cols);
 
