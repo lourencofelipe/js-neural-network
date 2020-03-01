@@ -3,7 +3,7 @@ function setup(){
     background(0);
     
     var nn = new RedeNeural(1, 3, 2);
-    var arr = [1, 2];
+    var arr = [1,2];
     
     nn.train(arr, [0,1]);
 }

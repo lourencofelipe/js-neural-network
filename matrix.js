@@ -18,12 +18,13 @@ class Matrix {
 
     // Funções diversas
 
-    arrayToMatrix(arr){
+    static arrayToMatrix(arr){
        // Recupera o array e transforma em um objeto.
        let matrix = new Matrix(arr.length, 1);
         matrix.map((elem, i, j) => {
-        return arr[i];
+            return arr[i];
         });
+        return matrix;
     }
 
     print(){
@@ -37,14 +38,14 @@ class Matrix {
     }
 
     // Mapeamento usado para função de ativação.
-    static map(A, func){
-        let matrix = new Matrix(A.rows, B.cols);
+    static map(A, func) {
+        let matrix = new Matrix(A.rows, A.cols);
 
-        this.data = matrix.map((arr, i) => {
+        matrix.data = A.data.map((arr, i) => {
             return arr.map((num, j) => {
                 return func(num, i, j);
-            });
-        });
+            })
+        })
 
         return matrix;
     }
