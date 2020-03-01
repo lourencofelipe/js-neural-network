@@ -73,9 +73,12 @@ class RedeNeural{
         // Derivada da saída.
         let d_output = Matrix.map(output, dSigmoid);
 
+        // Realizando a transposta da camada oculta.
+        let hidden_T = Matrix.transpose(hidden);
+
         // Realizando o produto(hadamard) das matrizes do erro de saída e da derivada.
         let gradient = Matrix.hadamard(output_error, d_output);
 
-        //gradient = Matrix.escalar_multiply(gradient, this.learning_rate);
+        gradient = Matrix.escalar_multiply(gradient, this.learning_rate);
     }
 }
