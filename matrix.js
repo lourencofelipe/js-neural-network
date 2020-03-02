@@ -58,7 +58,7 @@ class Matrix {
         return matrix;
     }
 
-    map(func){
+    map(func) {
         this.data = this.data.map((arr, i) => {
             return arr.map((num, j) => {
                 return func(num, i, j);
@@ -103,11 +103,10 @@ class Matrix {
 
     // Adição de matrizes.
     static add(A, B) {
+        
         var matrix = new Matrix(A.rows, A.cols);
 
         matrix.map((num, i, j) => {
-            console.log('A.data', A.data[i][j]);
-            console.log('B.data',B.data[i][j]);
             return A.data[i][j] + B.data[i][j];
         });
 

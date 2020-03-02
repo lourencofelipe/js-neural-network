@@ -109,7 +109,7 @@ class RedeNeural{
         // Gradiente da camada oculta.
         // Erro da camada ocula * derivada da camada oculta.
         let gradient_H = Matrix.hadamard(d_hidden, hidden_error);
-        gradient_H = Matrix.escalar_multiply(gradient, this.learning_rate);
+        gradient_H = Matrix.escalar_multiply(gradient_H, this.learning_rate);
 
         // Ajuste do BIAS O -> H.
         this.bias_ih = Matrix.add(this.bias_ih, gradient_H);
