@@ -1,4 +1,4 @@
-// Classe principal para organizar as matrizes
+// Classe principal para organizar as matrizes.
 class Matrix {
     constructor(rows, cols){
         this.rows = rows;
@@ -16,7 +16,7 @@ class Matrix {
         }
     } 
 
-    // Funções diversas
+    // Funções diversas.
 
     static arrayToMatrix(arr){
        // Recupera o array e transforma em um objeto.
@@ -54,7 +54,6 @@ class Matrix {
                 return func(num, i, j);
             })
         })
-
         return matrix;
     }
 
@@ -64,11 +63,10 @@ class Matrix {
                 return func(num, i, j);
             });
         });
-
         return this;
     }
 
-    // Mariz transposta.
+    // Matriz transposta.
     static transpose(A) {
         var matrix  = new Matrix(A.cols, A.rows);
         matrix.map((num, i, j) => {
@@ -78,7 +76,6 @@ class Matrix {
     }
 
     // Operações estáticas matriz x escalar.
-     
     static escalar_multiply(A, escalar){
         var matrix = new Matrix(A.rows, A.cols);
         matrix.map((num, i, j) => {
@@ -87,11 +84,9 @@ class Matrix {
         return matrix;
     }
 
-
     // Operações estáticas matriz x matriz.
 
     static hadamard(A, B){
-       
         // Porduto de matrizes de mesma dimensão.
         var matrix = new Matrix(A.rows, A.cols);
         matrix.map((num, i, j) => {
@@ -109,14 +104,13 @@ class Matrix {
         matrix.map((num, i, j) => {
             return A.data[i][j] + B.data[i][j];
         });
-
         return matrix;
     }
     
     // Subtração de matrizes.
     static subtract(A, B){
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) =>{
+        matrix.map((elem, i, j) => {
             return A.data[i][j] - B.data[i][j];
         });
         return matrix;
@@ -130,10 +124,12 @@ class Matrix {
             let sum = 0;
 
             for(let k=0; k<A.cols; k++){
-                let elem1 = A.data[i][k]; // Segue em direcao a coluna.
-                let elem2 = B.data[k][j]; // Segue em direcao a linha.
-
-                sum += elem1 * elem2; // Multiplica e soma uma linha por uma coluna.
+                // Segue em direcao a coluna.
+                let elem1 = A.data[i][k];
+                // Segue em direcao a linha.
+                let elem2 = B.data[k][j]; 
+                // Multiplica e soma uma linha por uma coluna.
+                sum += elem1 * elem2; 
             }
             return sum;
         });
