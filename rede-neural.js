@@ -42,7 +42,7 @@ class RedeNeural{
     }
 
    // Array de entrada e um array de saída;
-    train(arr, target) {
+    Train(arr, target) {
 
         // -------- INPUT -> HIDDEN --------
         let input = Matrix.arrayToMatrix(arr);
@@ -79,7 +79,7 @@ class RedeNeural{
         let hidden_T = Matrix.transpose(hidden);
 
         // Realizando o produto(hadamard) das matrizes do erro de saída e da derivada.
-        let gradient = Matrix.hadamard(output_error, d_output);
+        let gradient = Matrix.hadamard(d_output, output_error);
 
         // Learning rate
         gradient = Matrix.escalar_multiply(gradient, this.learning_rate);
@@ -108,7 +108,7 @@ class RedeNeural{
 
         // Gradiente da camada oculta.
         // Erro da camada ocula * derivada da camada oculta.
-        let gradient_H = Matrix.hadamard(hidden_error, d_hidden);
+        let gradient_H = Matrix.hadamard(d_hidden, hidden_error);
         gradient_H = Matrix.escalar_multiply(gradient, this.learning_rate);
 
         // Ajuste do BIAS O -> H.
@@ -121,28 +121,28 @@ class RedeNeural{
     }
 
     predict(arr) {
-          // -------- INPUT -> HIDDEN --------
-          let input = Matrix.arrayToMatrix(arr);
-                
-          // Multiplicando os pesos pelo input.
-          let hidden = Matrix.multiply(this.weights_ih, input);
+        let input = Matrix.arrayToMatrix(arr);
+        
+        // -------- INPUT -> HIDDEN --------
+        // Multiplicando os pesos pelo input.
+        let hidden = Matrix.multiply(this.weights_ih, input);
   
-          // Adicionando o BIAS.
-          hidden = Matrix.add(hidden, this.bias_ih);
+        // Adicionando o BIAS.
+         hidden = Matrix.add(hidden, this.bias_ih);
   
-          // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
-          hidden.map(sigmoid);
+        // Adicionado função de ativação (determinar qual tipo, ex: sigmoide).
+        hidden.map(sigmoid);
   
-          // -------- HIDDEN -> OUTPUT --------
-          //d(sigmoid) = Output * (1 - Output)
-          let output = Matrix.multiply(this.weights_ho, hidden);
+        // -------- HIDDEN -> OUTPUT --------
+        //d(sigmoid) = Output * (1 - Output)
+        let output = Matrix.multiply(this.weights_ho, hidden);
   
-          output = Matrix.add(output, this.bias_ho);
+        output = Matrix.add(output, this.bias_ho);
   
-          output.map(sigmoid);
+        output.map(sigmoid);
 
-          output = matrix.matrixToArray(output);
+        output = Matrix.matrixToArray(output);
 
-          return output;
+        return output;
     }
 }

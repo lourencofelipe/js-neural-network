@@ -27,13 +27,13 @@ class Matrix {
         return matrix;
     }
 
-    static matrixToArray(obj){
-        let arr = [];
+    static matrixToArray(obj) {
+        let arr = []
         obj.map((elem, i, j) => {
             arr.push(elem);
-        });
+        })
         return arr;
-     }
+    }
 
     print(){
         console.table(this.data);
@@ -81,7 +81,7 @@ class Matrix {
      
     static escalar_multiply(A, escalar){
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) => {
+        matrix.map((num, i, j) => {
             return A.data[i][j] * escalar;
         });
         return matrix;
@@ -94,7 +94,7 @@ class Matrix {
        
         // Porduto de matrizes de mesma dimensão.
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) => {
+        matrix.map((num, i, j) => {
             // Multiplicação elemento por elemento.
             return A.data[i][j] * B.data[i][j]; 
         });
@@ -102,11 +102,15 @@ class Matrix {
     }
 
     // Adição de matrizes.
-    static add(A, B){
+    static add(A, B) {
         var matrix = new Matrix(A.rows, A.cols);
-        matrix.map((elem, i, j) =>{
+
+        matrix.map((num, i, j) => {
+            console.log('A.data', A.data[i][j]);
+            console.log('B.data',B.data[i][j]);
             return A.data[i][j] + B.data[i][j];
         });
+
         return matrix;
     }
     
