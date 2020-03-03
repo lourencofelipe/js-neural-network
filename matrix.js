@@ -87,7 +87,7 @@ class Matrix {
     // Operações estáticas matriz x matriz.
 
     static hadamard(A, B){
-        // Porduto de matrizes de mesma dimensão.
+        // Produto de matrizes de mesma dimensão.
         var matrix = new Matrix(A.rows, A.cols);
         matrix.map((num, i, j) => {
             // Multiplicação elemento por elemento.
